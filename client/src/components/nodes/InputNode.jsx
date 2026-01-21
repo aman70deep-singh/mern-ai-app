@@ -54,9 +54,9 @@ const InputNode = ({ data }) => {
                         color: "#000",
                         cursor: "pointer",
                         fontWeight: 400,
-                        display:"flex",
-                        justifyContent:"center",
-                        alignItems:"center"
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center"
                     }}
                 >
                     {loading ? "Generating..." : "Generate"}
@@ -75,9 +75,9 @@ const InputNode = ({ data }) => {
                         cursor: canSave ? "pointer" : "not-allowed",
                         fontWeight: 400,
                         opacity: canSave ? 1 : 0.6,
-                         display:"flex",
-                        justifyContent:"center",
-                        alignItems:"center"
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center"
                     }}
                 >
                     Save
@@ -96,7 +96,7 @@ const InputNode = ({ data }) => {
                     <option value="mistralai/devstral-2512:free">
                         Mistral 7B (Free)
                     </option>
-                    <option value="google/gemini-2.0-flash-lite-001">
+                    <option value="google/gemini-2.0-flash-exp:free">
                         Gemini Flash Lite (Free)
                     </option>
                     <option value="tngtech/deepseek-r1t-chimera:free">
