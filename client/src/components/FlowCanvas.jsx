@@ -15,6 +15,7 @@ const FlowCanvas = () => {
     const [prompt, setPrompt] = useState("");
     const [result, setResult] = useState("");
     const [loading, setLoading] = useState(false);
+    const [model, setModel] = useState("mistralai/devstral-2512:free")
 
     const handleGenerate = async (promptText) => {
         setLoading(true);
@@ -23,6 +24,7 @@ const FlowCanvas = () => {
         try {
             const res = await api.post("/ask-ai", {
                 prompt: promptText,
+                model
             });
             setResult(res.data.data.answer);
         } catch (error) {
@@ -62,6 +64,7 @@ const FlowCanvas = () => {
             data: {
                 value: prompt,
                 onChange: setPrompt,
+                onModelChange: setModel,
                 onGenerate: handleGenerate,
                 onSave: handleSave,
                 loading,
@@ -71,7 +74,7 @@ const FlowCanvas = () => {
         {
             id: "2",
             type: "resultNode",
-            position: { x: 40, y: 150 }, 
+            position: { x: 40, y: 150 },
             draggable: false,
             data: {
                 text: result,

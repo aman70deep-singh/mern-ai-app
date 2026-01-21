@@ -1,13 +1,13 @@
 import { Handle, Position } from "reactflow";
 
 const InputNode = ({ data }) => {
-    const { value, onChange, onGenerate, onSave, loading, canSave } = data;
+    const { value, onChange, onGenerate, onSave, loading, canSave, model, onModelChange } = data;
 
     return (
         <div
             style={{
                 width: "95vw",
-                height: "17vh",
+                height: "20vh",
                 margin: "0 auto",
                 background: "#111",
                 border: "2px solid #000",
@@ -39,21 +39,24 @@ const InputNode = ({ data }) => {
                 style={{
                     display: "flex",
                     flexDirection: "column",
-                    gap: 10,
+                    gap: 6,
                 }}
             >
                 <button
                     onClick={() => onGenerate(value)}
                     disabled={loading || !value.trim()}
                     style={{
-                        height: 40,
-                        width: 120,
-                        borderRadius: 10,
+                        height: 30,
+                        width: 95,
+                        borderRadius: 5,
                         border: "1px solid #fff",
                         background: "#fff",
                         color: "#000",
                         cursor: "pointer",
                         fontWeight: 400,
+                        display:"flex",
+                        justifyContent:"center",
+                        alignItems:"center"
                     }}
                 >
                     {loading ? "Generating..." : "Generate"}
@@ -63,20 +66,48 @@ const InputNode = ({ data }) => {
                     onClick={onSave}
                     disabled={!canSave || loading}
                     style={{
-                        height: 40,
-                        width: 120,
-                        borderRadius: 10,
+                        height: 30,
+                        width: 95,
+                        borderRadius: 5,
                         border: "1px solid #fff",
                         background: canSave ? "#fff" : "#999",
                         color: "#000",
                         cursor: canSave ? "pointer" : "not-allowed",
                         fontWeight: 400,
                         opacity: canSave ? 1 : 0.6,
+                         display:"flex",
+                        justifyContent:"center",
+                        alignItems:"center"
                     }}
                 >
                     Save
                 </button>
+
+                <select
+                    value={model}
+                    onChange={(e) => onModelChange(e.target.value)}
+                    disabled={loading}
+                    style={{
+                        width: 120,
+                        padding: 5,
+                        borderRadius: 5,
+                    }}
+                >
+                    <option value="mistralai/devstral-2512:free">
+                        Mistral 7B (Free)
+                    </option>
+                    <option value="google/gemini-2.0-flash-lite-001">
+                        Gemini Flash Lite (Free)
+                    </option>
+                    <option value="tngtech/deepseek-r1t-chimera:free">
+                        Deepseek R1T Chimera (Free)
+                    </option>
+                    <option value="openai/gpt-oss-20b:free">
+                        GPT OSS 20B (Free)
+                    </option>
+                </select>
             </div>
+
 
             <Handle
                 type="source"

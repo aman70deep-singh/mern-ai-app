@@ -1,14 +1,15 @@
 import axios from "axios";
 import AIConversation from "../../models/ai.model.js";
-
+import { AI_MODELS } from "./ai.constants.js";
 const OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
-const MODEL = "google/gemini-2.0-flash-lite-001";
-export const getAIResponse = async (prompt) => {
+export const getAIResponse = async (prompt, model) => {
     try {
+        
+        const selectedModel = model || AI_MODELS.MISTRAL;
         const response = await axios.post(
             OPENROUTER_URL,
             {
-                model: MODEL,
+                model: selectedModel,
                 messages: [
                     {
                         role: "user",

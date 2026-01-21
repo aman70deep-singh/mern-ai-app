@@ -1,4 +1,5 @@
 import Joi from "joi";
+import { AI_MODELS } from "./ai.constants.js";
 
 export const askAiSchema = Joi.object({
     prompt: Joi.string()
@@ -8,6 +9,10 @@ export const askAiSchema = Joi.object({
             "string.empty": "Prompt cannot be empty",
             "any.required": "Prompt is required",
         }),
+    model: Joi.string()
+        .valid(...Object.values(AI_MODELS))
+        .default(AI_MODELS.MISTRAL)
+        .optional(),
 });
 
 
