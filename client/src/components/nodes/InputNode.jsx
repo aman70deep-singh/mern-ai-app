@@ -96,14 +96,8 @@ const InputNode = ({ data }) => {
                     <option value="mistralai/devstral-2512:free">
                         Mistral 7B (Free)
                     </option>
-                    <option value="google/gemini-2.0-flash-exp:free">
-                        Gemini Flash Lite (Free)
-                    </option>
                     <option value="tngtech/deepseek-r1t-chimera:free">
                         Deepseek R1T Chimera (Free)
-                    </option>
-                    <option value="openai/gpt-oss-20b:free">
-                        GPT OSS 20B (Free)
                     </option>
                 </select>
             </div>
