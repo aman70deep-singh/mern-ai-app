@@ -1,7 +1,6 @@
 import dotenv from 'dotenv';
 import app from './app.js';
 import connectDB from './config/db.js'
-import { getAIResponse } from './modules/ai/ai.service.js';
 
 dotenv.config();
 const startServer = async () => {
